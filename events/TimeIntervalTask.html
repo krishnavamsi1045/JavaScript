@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeInterval-Tasks</title>
+</head>
+<body>
+
+    <h2>krishnaVamsi</h2>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+
+    <script>
+            let set;
+        const printName = ()=>{
+            console.log("krishna is a boy");
+        }
+        document.getElementById('start').addEventListener('click',()=>{
+         set =   setInterval(printName,1000);
+        },false)
+        document.getElementById('stop').addEventListener('click',()=>{
+            clearInterval(set);
+            console.log("stoped");
+        },false)
+    </script>
+    
+</body>
+</html>

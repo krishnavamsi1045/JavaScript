@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Basics</title>
+</head>
+<body style="background-color: black; color:lavender;">
+
+    <h2>Basics</h2>
+    <ul id="list">
+        <li id="home">home</li>
+        <li id="aboutus"li>>AboutUs </li> 
+         <!-- onclick="console.log('hai bro ');console.log('namaskaram bro gareu');" -->
+        <!-- not a good approch (can be done in React) --> 
+        <li id="login">Login</li>
+        <li ><a id="google" href="https://www.google.com/">click here for google</a></li>
+    </ul>
+
+    <ul id="images">
+        <li><img src="../images/Avengers.jpeg" alt=""></li>
+        <li><img src="../images/Dc.jpeg" alt=""></li>
+        <li><img src="../images/StarWars.jpeg" alt=""DcStarWars.jpeg></li>
+
+        </ul>
+
+    <script>
+
+        //even this is good but it gives every less options;
+        // document.querySelector('#aboutus').onclick=(e)=>{
+        //     console.log("you clicked on aboutus");
+        //     console.log(e);
+        //     console.log(e.target);
+        //     console.log(e.target.textContent);
+        // }
+
+        //so prefer addEventListeners
+        // document.querySelector('#login').addEventListener('click',()=>{
+        //     console.log("you click on login man");
+        // },false)//default it's false  //event propagaion
+
+
+        // **************************** Event Object(e) very Important ***************
+
+       
+
+        //in interviews people ask to draw a circle where you clicked on window the use event object (e) and in view you get all
+        //infomation and people asks the time stamp it is also availble in e
+
+        //now what we need to learn
+
+        //types(keyboard event,mouse events etc),timestap,default prevented 
+        //target,toElemnt,sourceElement,currTarget
+        //client x,y screenx,y 
+        //altkey,shiftkey,ctrlkey,keyCode(for a->,b->)
+
+
+
+
+        // document.getElementById('home').addEventListener('click',(e)=>{
+        //     console.log(e);
+        // },false);//third argument is event propagation 
+        
+        //event propagation has two 
+        //1.event bubling
+        //2.event capturing
+
+
+        //Bubling Mode
+
+        //if you observe carefully it going from low it high which mean first it event then overall event 
+        //this is bubling stage
+
+
+
+
+        // document.getElementById('aboutus').addEventListener('click',()=>{
+        //     console.log('about us is clicked');
+        // },false)//false resemble ->bubbling event propagation
+
+        // document.getElementById('list').addEventListener('click',(e)=>{
+        //     console.log('you have clicked onside llists',false); //false resemble ->bubbling event propagation
+        // })true
+
+        //Capturing Mode
+        //now flow goes from outside to inside 
+
+        // document.getElementById('aboutus').addEventListener('click',()=>{
+        //     console.log('about us is clicked');
+        // },true) //true resemble ->capturing event propagation   
+
+        // document.getElementById('list').addEventListener('click',(e)=>{
+        //     console.log('you have clicked onside llists',true); //true resemble ->capturing event propagation
+        // })
+
+        //Based on your use case you it
+
+        //we can stop propagtion But for that we have to use event objects
+
+        document.getElementById('aboutus').addEventListener('click',(e)=>{
+           
+            console.log('about us is clicked');
+            
+        },true) //true resemble ->capturing event propagation   
+
+        document.getElementById('list').addEventListener('click',(e)=>{
+          
+            console.log('you have clicked inside lists'); //true resemble ->capturing event propagation
+           
+        },false)
+
+
+        document.getElementById('google').addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(`You have successfully prevented default behavior of google`);
+});
+
+//important
+
+//it you click on anywhere which comes under list teritory then you are deleting entire image so we are using checks
+
+
+document.querySelector('#images').addEventListener('click',(e)=>{
+    console.log(e);
+    console.log(e.target);
+    console.log(e.target.parentNode);
+    console.log(e.target.tagName);
+    console.log(e.target.parentNode.parentNode);
+
+    //now it won't delete entire list 
+    if(e.target.tagName ==='IMG'){
+        let removeIt = e.target.parentNode;
+     removeIt.remove();
+    }
+
+    
+    // //you can use this
+    //removeIt.parentNode.removeChild(removeIt);
+},false);
+
+
+
+
+
+
+
+
+       
+
+    </script>
+
+</body>
+</html>

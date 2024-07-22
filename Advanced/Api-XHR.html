@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xhr</title>
+</head>
+<body style="background-color: black; color:white">
+    <h2>this is xhr</h2>
+</body>
+<script>
+   
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',requestUrl);
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        console.log(`it is working man`);
+        if(xhr.readyState === 4){
+
+            // let data = this.responseText;
+            // console.log(data);
+            // console.log(typeof(data));//string 
+            // console.log(data.followers);//it gives undefined because majoritly we get response in string format
+          
+            //to solve above problem
+
+            let data = JSON.parse(this.responseText);
+            console.log(typeof(data));
+            console.log(data);
+            const image = document.createElement('img');
+                image.setAttribute('src',data.avatar_url);
+                document.querySelector('body').appendChild(image);
+           
+
+        }
+        
+    }
+    xhr.send();
+
+</script>
+</html>

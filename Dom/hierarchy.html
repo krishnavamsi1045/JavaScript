@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM-heirarcy</title>
+</head>
+<body style="background-color: black;color:lavender">
+
+    <div class="parent">   
+         <!-- this is comment    here one comment is added and line  and break so the coutnt is 11 remove this lene to see change in amount             this is a node line is breaking -->
+        <div class="day">monday</div>      this is a node line is breaking
+        <div class="day">tuesday</div>     this is a node line is breaking
+        <div class="day">wednesday</div>   this is a node line is breaking
+        <div class="day">thursday</div>    this is a node line is breaking
+    </div>
+    <script >
+        let parent = document.querySelector('.parent');
+        // console.log(parent);
+        // console.log(parent.children);
+
+        //even thouught (parent.children return html collection we can still app for loop)
+        // for(let i=0;i<parent.children.length;i++){
+        //     console.log(parent.children[i].innerText);
+        // }
+        // parent.children[0].style.backgroundColor='red'
+        // console.log(parent.firstElementChild);
+        // console.log(parent.lastElementChild);
+        // const firstChld = document.querySelector('.day');
+        // console.log(firstChld);
+        // console.log(firstChld.parentElement);
+        // console.log(firstChld.nextElementSibling.nextElementSibling);
+        // console.log(firstChld.previousElementSibling);
+
+        console.log("Nodes:",parent.childNodes); //it give 9 but we have only 4 elements why?
+                                                //because br also a node see the html code
+    </script>
+</body>
+</html>
