@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM:Edit and Remove</title>
+</head>
+<body style="background-color: black; color: lavender;">
+    <ul class="language"> 
+        <li>
+            javascript
+        </li>
+    </ul>
+    <script>
+    //     const languages = ['c++','java','python','c#','linus'];
+    //     const color = ['red','yellow','blue','green','orange'];
+    //    (function creatingListItems (){
+    //         for(let i=0;i<languages.length;i++){
+    //             let li = document.createElement('li');
+    //             li.id= Math.round(Math.random()*10 +1)+languages[i];
+    //             li.style.color=color[i];
+    //             li.className='generated';
+    //             document.getElementsByTagName('ul')[0].appendChild(li);
+    //             li.innerText=languages[i];
+    //         }
+    //    })()
+
+    //here the new created element is traversing throught the parent which is not optimized
+    function createOptimise(language,color){
+        let li = document.createElement('li');
+        li.style.color=color;
+        li.innerText=language;    //use append child then inner html (append child is more optimized)
+        document.querySelector('.language').appendChild(li);
+
+    }
+   
+
+    //more optmized
+    function moreOptimize(language){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(language)); //use apend child then inner html (append child is more optimized)
+        document.querySelector('.language').appendChild(li);
+    }
+    moreOptimize('pthon');
+    moreOptimize('c plus plus');
+    moreOptimize('go land');
+
+
+    //edit
+    const secondLanguage =  document.querySelector('li:nth-child(2)');
+    console.log(secondLanguage);
+    const newLi = document.createElement('li');
+    newLi.appendChild(document.createTextNode('c#'));
+    secondLanguage.replaceWith(newLi);
+
+    //remove
+    const firstLangugue = document.querySelector("li:first-child")
+    console.log(firstLangugue);
+    firstLangugue.remove();
+    </script>
+</body>
+</html>

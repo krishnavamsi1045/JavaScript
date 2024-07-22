@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+    <h2>Chai aur Code</h2>
+    <button id="stop">stop changing title</button>
+
+    <script>
+        //setTimeOut works only one time man
+        setTimeout(()=>{
+            console.log('hai');
+        },5000);
+
+        const changeTitle = ()=>{
+            document.querySelector("h2").textContent = 'kv';
+        }
+     const timeout =    setTimeout(changeTitle,4000);
+
+        //to remove setTimeout use  clearTimeOut
+        document.querySelector("#stop").addEventListener('click',()=>{
+            clearTimeout(timeout);
+            console.log("stopped");
+        },false)
+
+       // setInterval(()=>{console.log(`this is setInterval`);},1000)
+
+       const printName = (name)=>{
+        console.log(`${name} is a good boy`);
+       }
+       //setInterval(printName,1000,'vamsi'); //like this you can pass third parameter in setInterval time
+
+
+
+    </script>
+    
+</body>
+</html>
